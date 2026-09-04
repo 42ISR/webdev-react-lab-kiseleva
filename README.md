@@ -1,136 +1,16 @@
-# Лабораторная работа - React
+# React + Vite
 
-## Цель работы
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-Разбить страницу на компоненты и их стили и переписать сайт на React
+Currently, two official plugins are available:
 
-## Входные файлы
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Вам выдаётся готовый статический сайт-каталог онлайн-курсов «CodeCamp»:
+## React Compiler
 
-| Файл             | Назначение                                              |
-|------------------|----------------------------------------------------------|
-| `index.html`     | Вся вёрстка страницы одним файлом                        |
-| `style.css`      | Стили ко всей странице                                   |
-| `courses.json`   | Данные о курсах (используются в разделе «Наши курсы»)    |
-| `reviews.json`   | Данные об отзывах (используются в дополнительном задании)|
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Минимально ожидаемое дерево компонентов:
+## Expanding the Oxlint configuration
 
-```
-App
- ├─ Header
- ├─ Hero
- ├─ CourseList        (props: courses)
- │    └─ CourseCard   (props: course)
- ├─ TestimonialList   (props: reviews)
- │    └─ ReviewCard   (props: review)
- └─ Footer
-```
-
-## Часть 2. Настройка проекта
-
-1. Создайте новое React-приложение используя [Vite](https://vite.dev/).
-
-Содержимое JSON представьте JavaScript объектами внутри компонентов-контейнеров.
-
-## Требования к оформлению кода
-
-- Имя компонента, имя файла и имя CSS файла совпадают и начинаются с заглавной буквы.
-- Каждый компонент — отдельный файл, экспортируется по умолчанию (`export default`).
-- Внутри компонентов, принимающих пропсы, используется деструктуризация в параметрах функции, а не обращение через `props.что-то`.
-- Захардкоженных данных о курсах/отзывах в JSX быть не должно — только подставление props'ов сверху на место контента.
-- У каждого элемента списка есть `key`, построенный на основе индекса массива.
-
-# Как сдавать
-
-- Создайте форк репозитория в вашей организации с названием-этого-репозитория-вашафамилия
-- Используя ветку wip сделайте задание
-- Зафиксируйте изменения в вашем репозитории
-- Когда документ будет готов - создайте пул реквест из ветки wip (вашей) на ветку main (тоже вашу) и укажите меня (ktkv419) как reviewer
-
-Не мержите сами коммит, это сделаю я после проверки задания
-
----
-
-# Памятка
-
-## 0. React 
-
-Проект инициализируется через Vite `npm create vite@latest`
-
-Сервер запускается командой `npm run dev`
-
-Зависимости устанавливаются `npm install`
-
-## 1. Что такое пропсы
-
-**Props** (properties, свойства) — это способ передать данные из родительского компонента
-в дочерний. Пропсы работают только «сверху вниз» (от родителя к потомку) и являются
-**неизменяемыми** (read-only) внутри дочернего компонента — менять `props` напрямую нельзя.
-
-```jsx
-// Родитель передаёт пропсы дочернему компоненту через атрибуты, как в HTML
-<CourseCard title="React с нуля" price={15000} />
-```
-
-## 2. Приём пропсов в компоненте
-
-Функциональный компонент получает пропсы одним объектом первым аргументом.
-Удобнее сразу деструктурировать нужные поля:
-
-```jsx
-// Вариант 1 — через объект props
-function CourseCard(props) {
-  return <h3>{props.title}</h3>;
-}
-
-// Вариант 2 — деструктуризация в параметрах (предпочтительный способ)
-function CourseCard({ title, price }) {
-  return (
-    <div className="course-card">
-      <h3>{title}</h3>
-      <span>{price} ₽</span>
-    </div>
-  );
-}
-```
-
-## 3. Передача разных типов данных
-
-Строки можно передавать без фигурных скобок, всё остальное — только в `{}`:
-
-```jsx
-<CourseCard
-  title="Python для анализа данных"   // строка — в кавычках
-  price={20000}                        // число — в {}
-  rating={4.9}                         // число
-  isPopular={true}                     // булево значение
-  tags={["backend", "python"]}         // массив
-  onEnroll={() => console.log("go")}   // функция-колбэк
-/>
-```
-
-## 4. Передача объекта целиком
-
-Если данные уже лежат объектом (например, один элемент массива из JSON),
-удобно передать его одним пропом, а внутри компонента — деструктурировать:
-
-```jsx
-const course = { id: 1, title: "React с нуля", price: 15000 };
-
-<CourseCard course={course} />
-
-function CourseCard({ course }) {
-  const { title, price } = course;
-  return <h3>{title} — {price} ₽</h3>;
-}
-```
-
-Либо «распылить» объект на отдельные пропсы через spread-оператор:
-
-```jsx
-<CourseCard {...course} />
-
-function CourseCard({ title, price }) { ... }
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.

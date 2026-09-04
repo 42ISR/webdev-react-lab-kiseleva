@@ -1,0 +1,16 @@
+.testimonials {
+  background: #eef0f7;
+  padding: 64px 0;
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+}
