@@ -1,0 +1,36 @@
+.header {
+  background: #fff;
+  border-bottom: 1px solid #e7e9ee;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+}
+.logo span { color: #4b5efc; }
+
+.nav {
+  display: flex;
+  gap: 28px;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #1f2430;
+  font-size: 15px;
+}
+.nav__link:hover { color: #4b5efc; }
+
+@media (max-width: 768px) {
+  .nav { display: none; }
+}

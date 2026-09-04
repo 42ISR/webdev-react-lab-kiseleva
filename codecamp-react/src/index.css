@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #1f2430;
+  background: #f7f8fa;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.btn:hover { opacity: 0.85; }
+
+.btn--primary {
+  background: #4b5efc;
+  color: #fff;
+}
+
+.btn--outline {
+  background: transparent;
+  color: #4b5efc;
+  border: 1px solid #4b5efc;
+}
+
+.btn--full {
+  width: 100%;
+  margin-top: 12px;
+}

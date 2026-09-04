@@ -1,0 +1,15 @@
+.courses {
+  padding: 64px 0;
+}
+
+.courses__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .courses__grid {
+    grid-template-columns: 1fr;
+  }
+}
